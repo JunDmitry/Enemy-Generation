@@ -31,12 +31,6 @@ public class Enemy : MonoBehaviour
             CollidedWithFence?.Invoke(this);
     }
 
-    private void OnDisable()
-    {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-    }
-
     public void Reset()
     {
         _direction = Vector3.zero;
@@ -50,7 +44,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator MoveTo(Vector3 target)
     {
-        while ((target - transform.position).sqrMagnitude >= Epsilon * Epsilon)
+        while ((target - transform.position).sqrMagnitude >= Epsilon * Epsilon && enabled)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);
             yield return null;
