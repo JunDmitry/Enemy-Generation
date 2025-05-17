@@ -9,9 +9,9 @@ public class EnemyPool : MonoBehaviour
 
     private Stack<Enemy> _pool;
 
-    public event Action<Enemy> Getting;
+    public event Action<Enemy> Getted;
 
-    public event Action<Enemy> Releasing;
+    public event Action<Enemy> Released;
 
     private void Awake()
     {
@@ -29,7 +29,7 @@ public class EnemyPool : MonoBehaviour
         Enemy enemy = _pool.Count == 0 ? _enemyFactory.Create() : _pool.Pop();
         enemy.transform.SetPositionAndRotation(position, rotation);
         enemy.gameObject.SetActive(true);
-        Getting?.Invoke(enemy);
+        Getted?.Invoke(enemy);
 
         return enemy;
     }
@@ -38,6 +38,6 @@ public class EnemyPool : MonoBehaviour
     {
         enemy.gameObject.SetActive(false);
         _pool.Push(enemy);
-        Releasing?.Invoke(enemy);
+        Released?.Invoke(enemy);
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -8,27 +9,35 @@ public class Spawner : MonoBehaviour
     [SerializeField, Min(MinInterval)] private float _spawnInterval = MinInterval;
     [SerializeField] private EnemyPool _enemyPool;
 
+    private Coroutine _coroutine;
+
     private void OnEnable()
     {
-        _enemyPool.Getting += OnGetting;
-        _enemyPool.Releasing += OnReleasing;
-        InvokeRepeating(nameof(Spawn), _spawnInterval, _spawnInterval);
+        _enemyPool.Getted += OnGetted;
+        _enemyPool.Released += OnReleased;
+        _coroutine = StartCoroutine(Spawn());
     }
 
     private void OnDisable()
     {
-        _enemyPool.Getting -= OnGetting;
-        _enemyPool.Releasing -= OnReleasing;
-        CancelInvoke(nameof(Spawn));
+        _enemyPool.Getted -= OnGetted;
+        _enemyPool.Released -= OnReleased;
+        StopCoroutine(_coroutine);
     }
 
-    private void Spawn()
+    private IEnumerator Spawn()
     {
-        Vector3 spawnPoint = _spawnPoints[Random.Range(0, _spawnPoints.Length)].position;
-        _enemyPool.GetEnemy(spawnPoint, Quaternion.identity);
+        WaitForSeconds waitSeconds = new(_spawnInterval);
+
+        while (enabled)
+        {
+            Vector3 spawnPoint = _spawnPoints[Random.Range(0, _spawnPoints.Length)].position;
+            _enemyPool.GetEnemy(spawnPoint, Quaternion.identity);
+            yield return waitSeconds;
+        }
     }
 
-    private void OnGetting(Enemy enemy)
+    private void OnGetted(Enemy enemy)
     {
         Vector2 direction = Random.insideUnitCircle.normalized;
 
@@ -36,7 +45,7 @@ public class Spawner : MonoBehaviour
         enemy.Initialize(new(direction.x, 0f, direction.y));
     }
 
-    private void OnReleasing(Enemy enemy)
+    private void OnReleased(Enemy enemy)
     {
         enemy.CollidedWithFence -= OnCollidedWithFence;
         enemy.Reset();
