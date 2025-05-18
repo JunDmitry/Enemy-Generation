@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7828008343779978049
+--- !u!1001 &3093301922645218382
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 4850617969341949114, guid: 6ffc0ec76a83d2746a6f99b21ed40417, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e4e3f199869d03e4d93157a2915efe12, type: 2}
+      objectReference: {fileID: 2100000, guid: a29131acbcc06224f8c9805666a6e301, type: 2}
     - target: {fileID: 7662751097391439640, guid: 6ffc0ec76a83d2746a6f99b21ed40417, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -55,10 +55,10 @@ PrefabInstance:
     - target: {fileID: 7916577243263749595, guid: 6ffc0ec76a83d2746a6f99b21ed40417, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 8356012988068760946, guid: 6ffc0ec76a83d2746a6f99b21ed40417, type: 3}
       propertyPath: m_Name
-      value: Sphere V
+      value: Cylider V
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9023872136329839245, guid: 6ffc0ec76a83d2746a6f99b21ed40417, type: 3}
@@ -67,20 +67,20 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8356012988068760946, guid: 6ffc0ec76a83d2746a6f99b21ed40417, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -2189586644234964172}
+      addedObject: {fileID: -5229761844202393553}
   m_SourcePrefab: {fileID: 100100000, guid: 6ffc0ec76a83d2746a6f99b21ed40417, type: 3}
---- !u!1 &2257475043106694707 stripped
+--- !u!1 &6420752356067940668 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8356012988068760946, guid: 6ffc0ec76a83d2746a6f99b21ed40417, type: 3}
-  m_PrefabInstance: {fileID: 7828008343779978049}
+  m_PrefabInstance: {fileID: 3093301922645218382}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &-2189586644234964172
-SphereCollider:
+--- !u!136 &-5229761844202393553
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2257475043106694707}
+  m_GameObject: {fileID: 6420752356067940668}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -92,6 +92,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

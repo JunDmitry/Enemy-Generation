@@ -7,10 +7,10 @@ public class Patrol : MonoBehaviour
     [SerializeField] private Route _route;
     [SerializeField] private float _speed;
 
-    private void FixedUpdate()
+    private void Update()
     {
         Vector3 target = _route.Target;
-        float distance = _speed * Time.fixedDeltaTime;
+        float distance = _speed * Time.deltaTime;
 
         transform.LookAt(target);
         transform.position = Vector3.MoveTowards(transform.position, target, distance);
