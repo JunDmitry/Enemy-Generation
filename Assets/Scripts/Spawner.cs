@@ -15,7 +15,7 @@ public class Spawner : MonoBehaviour
         _waitSeconds = new(_spawnInterval);
     }
 
-    private void OnEnable()
+    private void Start()
     {
         StartCoroutine(Spawn());
     }
